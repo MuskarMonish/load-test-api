@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Test Custom Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light background color */
+            color: #343a40; /* Dark text color */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 77%;
+            margin: 0 auto;
+            background-color: #a3a7aa; /* Dark background color */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #f8f9fa; /* Light text color */
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #6c757d; /* Dark border color */
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue button color */
+            color: #f8f9fa; /* Light text color */
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #6c757d; /* Dark border color */
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+    <script src="https://cdn.socket.io/4.2.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Load Test Custom Input</h1>
+    <form id="loadTestForm">
+        <label for="reqs">Requests</label>
+        <input type="number" id="reqs" name="reqs" required>
+        <label for="duration">Duration (seconds):</label>
+        <input type="number" id="duration" name="duration" required>
+        <button type="submit">Start Load Test</button>
+    </form>
+
+    <table id="loadTestTable">
+        <thead style="background-color: #a3a7aa;">
+            <tr>
+                <th style="width: 40%;">URLs</th>
+                <th>Requests Made</th>
+                <th>Error Rate</th>
+                <th>97th Percentile</th>
+                <th>Average Response Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="url-input" style="border: #f8f9fa; background-color:#f8f9fa;width:100%; height: 100%;" required></td>
+                <td class="requests-made"></td>
+                <td class="error-rate"></td>
+                <td class="percentile-97"></td>
+                <td class="average-response-time"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const socket = io();
+
+        document.getElementById("loadTestForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            clearTableData();
+
+            // Gather values from the form inputs
+            const formData = new FormData(this);
+            
+            const duration = parseInt(formData.get("duration"));
+            const reqs = parseInt(formData.get("reqs"));
+            // Gather values from the table
+            const tableRows = document.querySelectorAll("#loadTestTable tbody tr");
+            const tableData = Array.from(tableRows).map(row => row.querySelector(".url-input").value.trim());
+            const concurrency = tableData.filter(url => url.trim() !== "").length;
+            try {
+                // Send payload to server
+                const response = await fetch("/startLoadTest", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ urls: tableData, concurrency, duration,reqs}) // Include 'reqs' in the payload
+                });
+
+                if (response.ok) {
+                    console.log("Load test started successfully.");
+                } else {
+                    throw new Error("Failed to start load test.");
+                }
+            } catch (error) {
+                console.error(error.message);
+                // Display error message to the user
+                alert("Failed to start load test. Please try again.");
+            }
+        });
+
+
+        socket.on('loadTestCompleted', (data) => {
+            const tableRows = document.querySelectorAll("#loadTestTable tbody tr");
+
+            for (let i = 0; i < tableRows.length; i++) {
+                const row = tableRows[i];
+                const url = row.querySelector(".url-input").value.trim();
+                const requestsMade = data.requestsMade[url] || 0;
+                const errorRate = data.errorRates[url] || 0;
+                const averageResponseTime = data.averageResponseTimes[url] || 0;
+                const percentile97 = data.percentile97[url] || 0;
+
+                // Display data only if URL is present
+                if (url.trim() !== "") {
+                    row.querySelector(".requests-made").textContent = requestsMade;
+                    row.querySelector(".error-rate").textContent = errorRate + "%";
+                    row.querySelector(".percentile-97").textContent = percentile97 + " ms";
+                    row.querySelector(".average-response-time").textContent = averageResponseTime + " ms";
+                } else {
+                    // Hide data if URL is not present
+                    row.querySelector(".requests-made").textContent = "";
+                    row.querySelector(".error-rate").textContent = "";
+                    row.querySelector(".percentile-97").textContent = "";
+                    row.querySelector(".average-response-time").textContent = "";
+                }
+            }
+        });
+
+        // Listen for 'requestUpdate' event
+        socket.on('requestUpdate', (data) => {
+            const tableRows = document.querySelectorAll("#loadTestTable tbody tr");
+
+            for (let i = 0; i < tableRows.length; i++) {
+                const row = tableRows[i];
+                const url = row.querySelector(".url-input").value.trim();
+
+                // Update row if URL matches
+                if (url === data.url) {
+                    row.querySelector(".requests-made").textContent = data.requestsMade;
+                    row.querySelector(".error-rate").textContent = data.errorRate.toFixed(2) + "%";
+                    row.querySelector(".percentile-97").textContent = data.percentile97.toFixed(2) + " ms";
+                    row.querySelector(".average-response-time").textContent = data.averageResponseTime.toFixed(2) + " ms";
+                    break; // Break loop if URL is found and updated
+                }
+            }
+        });
+
+        function clearTableData() {
+            const tableRows = document.querySelectorAll("#loadTestTable tbody tr");
+
+            for (let i = 0; i < tableRows.length; i++) {
+                const row = tableRows[i];
+                row.querySelector(".requests-made").textContent = "";
+                row.querySelector(".error-rate").textContent = "";
+                row.querySelector(".percentile-97").textContent = "";
+                row.querySelector(".average-response-time").textContent = "";
+            }
+        }
+
+    </script>
+</body>
+</html>
